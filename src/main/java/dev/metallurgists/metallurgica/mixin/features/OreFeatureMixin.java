@@ -1,4 +1,4 @@
-package dev.metallurgists.metallurgica.mixin;
+package dev.metallurgists.metallurgica.mixin.features;
 
 import com.mojang.serialization.Codec;
 import dev.metallurgists.metallurgica.registry.MetallurgicaTags;

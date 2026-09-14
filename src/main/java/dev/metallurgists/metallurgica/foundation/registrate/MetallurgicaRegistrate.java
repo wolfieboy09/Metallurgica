@@ -1,10 +1,39 @@
 package dev.metallurgists.metallurgica.foundation.registrate;
 
-import com.simibubi.create.api.behaviour.display.DisplaySource;
-import com.simibubi.create.api.registry.CreateRegistries;
-import com.simibubi.create.api.registry.registrate.SimpleBuilder;
+import com.drmangotea.tfmg.content.electricity.connection.cable_type.CableType;
+import com.drmangotea.tfmg.content.electricity.connection.cable_type.CableTypeBuilder;
+import com.simibubi.create.foundation.data.CreateBlockEntityBuilder;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.data.SharedProperties;
+import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.builders.BlockEntityBuilder;
+import com.tterrag.registrate.builders.ItemBuilder;
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import dev.latvian.mods.kubejs.util.Tags;
 import dev.metallurgists.metallurgica.Metallurgica;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+
 //import dev.metallurgists.metallurgica.content.fluids.types.Acid;
 //import dev.metallurgists.metallurgica.content.fluids.types.TransparentTintedFluidType;
 //import dev.metallurgists.metallurgica.content.temperature.hot_plate.heating_coil.HeatingCoilType;
@@ -12,8 +41,6 @@ import dev.metallurgists.metallurgica.Metallurgica;
 //import dev.metallurgists.metallurgica.foundation.fluid.MoltenMetalFluid;
 //import dev.metallurgists.metallurgica.foundation.fluid.VirtualMaterialFluid;
 //import dev.metallurgists.metallurgica.foundation.item.AlloyItem;
-import com.drmangotea.tfmg.content.electricity.connection.cable_type.CableType;
-import com.drmangotea.tfmg.content.electricity.connection.cable_type.CableTypeBuilder;
 //import dev.metallurgists.metallurgica.infastructure.material.Material;
 //import dev.metallurgists.metallurgica.foundation.item.MetallurgicaItem;
 //import dev.metallurgists.metallurgica.infastructure.element.Element;
@@ -21,46 +48,7 @@ import com.drmangotea.tfmg.content.electricity.connection.cable_type.CableTypeBu
 //import dev.metallurgists.metallurgica.infastructure.material.MaterialBuilder;
 //import dev.metallurgists.metallurgica.infastructure.material.registry.flags.base.interfaces.IFluidRegistry;
 //import dev.metallurgists.metallurgica.registry.MetallurgicaSpriteShifts;
-import com.simibubi.create.AllTags;
-import com.simibubi.create.content.decoration.palettes.ConnectedPillarBlock;
-import com.simibubi.create.content.fluids.VirtualFluid;
-import com.simibubi.create.foundation.block.connected.RotatedPillarCTBehaviour;
-import com.simibubi.create.foundation.data.CreateBlockEntityBuilder;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.foundation.data.VirtualFluidBuilder;
-import com.tterrag.registrate.builders.BlockBuilder;
-import com.tterrag.registrate.builders.BlockEntityBuilder;
-import com.tterrag.registrate.builders.FluidBuilder;
-import com.tterrag.registrate.builders.ItemBuilder;
-import com.tterrag.registrate.providers.DataGenContext;
-import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
-import com.tterrag.registrate.util.entry.*;
-import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
-import com.tterrag.registrate.util.nullness.NonNullFunction;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 //import dev.metallurgists.metallurgica.registry.misc.MetallurgicaRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.fluids.BaseFlowingFluid;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
-
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public class MetallurgicaRegistrate extends CreateRegistrate {
     /**
@@ -172,7 +160,7 @@ public class MetallurgicaRegistrate extends CreateRegistrate {
     public <T extends Item> ItemEntry<T> item(String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties, String... tags) {
         ItemBuilder<T, ?> builder = this.item(name, factory).properties(properties);
         for(String tag : tags) {
-            builder.tag(Tags.item(ResourceLocation.fromNamespaceAndPath(Metallurgica.ID, tag)));
+            builder.tag(Tags.item(ResourceLocation.fromNamespaceAndPath(Metallurgica.MOD_ID, tag)));
         }
         return builder.register();
     }

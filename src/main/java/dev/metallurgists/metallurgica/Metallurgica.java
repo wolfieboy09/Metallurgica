@@ -23,47 +23,22 @@ import static com.simibubi.create.foundation.item.TooltipHelper.styleFromColor;
 public class Metallurgica {
     public static final String MOD_ID = "metallurgica";
     public static final Logger LOGGER = LogUtils.getLogger();
-    
-    public static final MetallurgicaRegistrate REGISTRATE = MetallurgicaRegistrate.create(MOD_ID);
 
     public static final FontHelper.Palette PALETTE = new FontHelper.Palette(styleFromColor(0x383d59), styleFromColor(0x717388));
 
-    static {
-        REGISTRATE.setTooltipModifierFactory((item) -> (new ItemDescription.Modifier(item, PALETTE)).andThen(TooltipModifier.mapNull(KineticStats.create(item))));
-    }
+    public static final MetallurgicaRegistrate REGISTRATE = MetallurgicaRegistrate.create(MOD_ID);
+
     
     public Metallurgica(IEventBus modEventBus, ModContainer modContainer) {
         REGISTRATE.registerEventListeners(modEventBus);
     }
     
-    public static void init(final FMLCommonSetupEvent event) {
-
-    }
-
-    public static void initMaterials(IEventBus modEventBus) {
-
-    }
-    
-    private void commonSetup(final FMLCommonSetupEvent event) {
-
-    }
-    
     @SubscribeEvent
     public void onServerStart(ServerAboutToStartEvent event) {
         LOGGER.info("Thanks for using Metallurgica! Expect a severe lack of ores in your world :3");
-
     }
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
-    }
-
 
     public static ResourceLocation asResource(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-    }
-
-    public static @NotNull MetallurgicaRegistrate registrate() {
-        return REGISTRATE;
     }
 }

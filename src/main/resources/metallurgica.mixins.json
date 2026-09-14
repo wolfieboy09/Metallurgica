@@ -6,8 +6,9 @@
   "refmap": "metallurgica.refmap.json",
   "plugin": "dev.metallurgists.metallurgica.MetallurgicaMixinsPlugin",
   "mixins": [
+    "features.GeodeFeatureMixin",
     "NoiseGeneratorSettingsMixin",
-    "OreFeatureMixin",
+    "features.OreFeatureMixin",
     "WorldGenRegionMixin"
   ],
   "client": [

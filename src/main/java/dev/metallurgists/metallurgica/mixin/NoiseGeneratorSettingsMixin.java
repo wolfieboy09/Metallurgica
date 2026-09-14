@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(NoiseGeneratorSettings.class)
-public class NoiseGeneratorSettingsMixin {
+public abstract class NoiseGeneratorSettingsMixin {
     @Inject(method = "oreVeinsEnabled", at = @At("RETURN"), cancellable = true)
     private void metallurgica$killLargeVeins(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(false);

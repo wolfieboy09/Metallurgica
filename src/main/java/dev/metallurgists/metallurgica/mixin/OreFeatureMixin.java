@@ -1,10 +1,12 @@
 package dev.metallurgists.metallurgica.mixin;
 
+import com.mojang.serialization.Codec;
 import dev.metallurgists.metallurgica.registry.MetallurgicaTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.OreFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
@@ -17,7 +19,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.function.Function;
 
 @Mixin(OreFeature.class)
-public class OreFeatureMixin {
+public abstract class OreFeatureMixin extends Feature<OreConfiguration> {
+    public OreFeatureMixin(Codec<OreConfiguration> codec) {
+        super(codec);
+    }
+
     @Inject(method = "place", at = @At("HEAD"), cancellable = true)
     private void metallurgica$placeCancel(FeaturePlaceContext<OreConfiguration> context, CallbackInfoReturnable<Boolean> cir) {
         OreConfiguration config = context.config();

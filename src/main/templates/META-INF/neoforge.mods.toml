@@ -21,28 +21,35 @@ config = "metallurgica.mixins.json"
 
 [[dependencies.metallurgica]]
 modId="neoforge"
-mandatory=true
+type="required"
 versionRange="[${neo_version},)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.metallurgica]]
 modId="minecraft"
-mandatory=true
+type="required"
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.metallurgica]]
+modId="kubejs"
+type="optional"
+versionRange="[${kubejs_version},)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.metallurgica]]
 modId="tfmg"
-mandatory=true
+type="required"
 versionRange="[{$tfmg_version},)"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies.metallurgica]]
 modId="create"
-mandatory=true
+type="required"
 versionRange="[6.0.10,)"
 ordering="NONE"
 side="BOTH"

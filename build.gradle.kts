@@ -146,9 +146,8 @@ dependencies {
 
     implementation("com.drmangotea:tfmg:${property("minecraft_version")}-${property("tfmg_version")}") { isTransitive = false }
 
-//    api("dev.latvian.mods:kubejs-neoforge:${property("kubejs_version")}")
-//    api("dev.latvian.mods:rhino-neoforge:${property("rhino_version")}")
-
+    implementation("dev.latvian.mods:kubejs-neoforge:${property("kubejs_version")}")
+    implementation("dev.latvian.mods:rhino-neoforge:${property("rhino_version")}")
 
     runtimeOnly("me.djtheredstoner:DevAuth-neoforge:1.2.1")
 }
@@ -168,6 +167,7 @@ val generateModMetadata = tasks.register<ProcessResources>("generateModMetadata"
         "mod_credits" to project.property("mod_credits") as String,
         "mod_description" to project.property("mod_description") as String,
         "tfmg_version" to project.property("tfmg_version") as String,
+        "kubejs_version" to project.property("kubejs_version") as String
     )
     inputs.properties(replaceProperties)
     expand(replaceProperties)

@@ -35,7 +35,7 @@ public class Metallurgica {
     }
     
     @SubscribeEvent
-    public void onServerStart(ServerAboutToStartEvent event) {
+    public static void onServerStart(ServerAboutToStartEvent event) {
         LOGGER.info("Thanks for using Metallurgica! Expect a severe lack of ores in your world :3");
     }
 

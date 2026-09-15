@@ -23,7 +23,9 @@ public class MetallurgicaGLMProvider extends GlobalLootModifierProvider {
         add("replace_ingots_modifier", new ReplaceItemLootModifier(
                 new LootItemCondition[] {},
                 List.of(
-                        replace(Items.IRON_INGOT, AllItems.CRUSHED_IRON.get())
+                        replace(Items.IRON_INGOT, AllItems.CRUSHED_IRON.get()),
+                        replace(Items.GOLD_INGOT, AllItems.CRUSHED_GOLD.get()),
+                        replace(Items.COPPER_INGOT, AllItems.CRUSHED_COPPER.get())
                 )));
     }
 

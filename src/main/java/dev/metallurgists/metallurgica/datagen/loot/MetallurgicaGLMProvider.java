@@ -30,6 +30,6 @@ public class MetallurgicaGLMProvider extends GlobalLootModifierProvider {
     }
 
     private static ReplaceItemLootModifier.Replacement replace(Item oldItem, Item newItem) {
-        return ReplaceItemLootModifier.replace(ReplaceItemLootModifier.entry(oldItem), ReplaceItemLootModifier.entry(newItem));
+        return ReplaceItemLootModifier.replace(oldItem, newItem);
     }
 }

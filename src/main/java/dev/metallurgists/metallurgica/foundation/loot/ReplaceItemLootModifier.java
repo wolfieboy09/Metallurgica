@@ -64,6 +64,10 @@ public class ReplaceItemLootModifier extends LootModifier {
         return new ItemEntry(item);
     }
 
+    public static Replacement replace(Item oldItem, Item newItem) {
+        return new Replacement(entry(oldItem), entry(newItem));
+    }
+
     public static Replacement replace(ItemEntry oldItem, ItemEntry newItem) {
         return new Replacement(oldItem, newItem);
     }

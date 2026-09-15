@@ -1,7 +1,6 @@
 {
-  "type": "metallurgica:replace_item_loot_modifier",
-  "conditions": [
-  ],
+  "type": "metallurgica:replace_item",
+  "conditions": [],
   "replacements": [
     {
       "input": {

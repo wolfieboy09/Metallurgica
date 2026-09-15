@@ -9,7 +9,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-public class MetallurgicaLootModifiers {
+public final class MetallurgicaLootModifiers {
+    private MetallurgicaLootModifiers() {}
+
     public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS =
             DeferredRegister.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Metallurgica.MOD_ID);
 

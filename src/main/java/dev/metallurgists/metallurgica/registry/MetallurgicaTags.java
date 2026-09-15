@@ -9,7 +9,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
-public class MetallurgicaTags {
+public final class MetallurgicaTags {
+    private MetallurgicaTags() {}
+
     public enum NameSpace {
         MOD(Metallurgica.MOD_ID),
         COMMON("c");

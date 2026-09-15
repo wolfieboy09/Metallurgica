@@ -36,7 +36,11 @@ repositories {
     maven("https://maven.blamejared.com")
     maven("https://krystalsmaven.oreostack.uk/releases")
     maven("https://krystalsmaven.oreostack.uk/snapshots")
-    maven("https://repo.sleeping.town/")
+    maven("https://repo.sleeping.town/") {
+        content {
+            includeGroup("dev.emi")
+        }
+    }
     maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
     maven("https://maven.terraformersmc.com/")
     maven("https://maven.ryanhcode.dev/releases")

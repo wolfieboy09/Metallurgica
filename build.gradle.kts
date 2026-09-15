@@ -35,6 +35,7 @@ repositories {
     maven("https://maven.ithundxr.dev/snapshots")
     maven("https://maven.blamejared.com")
     maven("https://krystalsmaven.oreostack.uk/releases")
+    maven("https://krystalsmaven.oreostack.uk/snapshots")
     maven("https://repo.sleeping.town/")
     maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
     maven("https://maven.terraformersmc.com/")
@@ -144,7 +145,9 @@ dependencies {
 
 //    compileOnly("dev.emi:emi-neoforge:${property("emi_version")}:api")
 
-    implementation("com.drmangotea:tfmg:${property("minecraft_version")}-${property("tfmg_version")}") { isTransitive = false }
+    //implementation("com.drmangotea:tfmg:${property("minecraft_version")}-${property("tfmg_version")}") { isTransitive = false }
+
+    implementation("com.drmangotea:tfmg:${property("minecraft_version")}-${property("tfmg_version")}-build.207") { isTransitive = false }
 
     implementation("dev.latvian.mods:kubejs-neoforge:${property("kubejs_version")}")
     implementation("dev.latvian.mods:rhino-neoforge:${property("rhino_version")}")
